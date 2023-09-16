@@ -1,0 +1,43 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.container {
+  margin: auto;
+  max-width: var(--max-width);
+  min-width: var(--min-width);
+  padding: 15px;
+  display: flex;
+}
+
+.header {
+  width: 100%;
+  font-size: 13px;
+  .logo {
+    svg {
+      width: 6.25em;
+    }
+  }
+}
+
+.footer {
+  width: 100%;
+  font-size: 11px;
+  ul {
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    list-style: none;
+    gap: 1.3em;
+    li {
+      cursor: pointer;
+      opacity: 0.4;
+      transition: 0.2s;
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+}

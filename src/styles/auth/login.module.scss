@@ -1,0 +1,134 @@
+.main {
+  width: 100%;
+  margin: auto;
+  font-size: 15px;
+  .container {
+    width: 100%;
+    max-width: 370px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    h1 {
+      margin-bottom: 1em;
+    }
+  }
+}
+
+.form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  input,
+  button {
+    width: 100%;
+    border-radius: 10px;
+    border-radius: 10px;
+    border: none;
+    padding: 1.3em;
+    font-size: 0.9em;
+    font-weight: 400;
+    line-height: 140%;
+  }
+  input {
+    background-color: rgba(0, 0, 0, 0.055);
+    &::placeholder {
+      opacity: 0.8;
+    }
+    &:focus {
+      outline: 1px solid rgba(0, 0, 0, 0.2);
+    }
+  }
+}
+
+.loginBtn {
+  background-color: rgba(0, 0, 0, 0.9);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+
+  cursor: pointer;
+  .logo,
+  span {
+    opacity: 0.3;
+    transition: 0.2s;
+  }
+  .logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    margin: 0px 15px;
+    transform: translate(0%, -50%);
+    svg {
+      width: 1.4em;
+    }
+  }
+
+  &:hover {
+    span,
+    .logo {
+      opacity: 0.7;
+    }
+  }
+}
+
+.authLinks {
+  width: 100%;
+  margin: 20px;
+  font-size: 12px;
+  padding: 10px;
+  list-style: none;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+
+  hr {
+    opacity: 0.4;
+  }
+  a {
+    opacity: 0.6;
+    text-decoration: none;
+    color: rgb(0, 123, 255);
+    transition: 0.2s;
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
+
+.divider {
+  margin: 20px;
+  font-size: 12px;
+  width: 100%;
+  text-align: center;
+  position: relative;
+  opacity: 0.3;
+  span {
+    padding: 0 10px; // 텍스트와 선 사이의 간격
+    z-index: 1;
+  }
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 43%;
+    height: 1px; // 선의 두께
+    background: #000; // 선 색상
+    z-index: 0;
+  }
+  &::before {
+    left: 0;
+  }
+  &::after {
+    right: 0;
+  }
+}

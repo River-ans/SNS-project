@@ -1,0 +1,15 @@
+.header {
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.393);
+  .container {
+    display: flex;
+    background-color: rgba(0, 0, 0, 0.164);
+    max-width: var(--max-width);
+    min-width: var(--min-width);
+    margin: auto;
+
+    .logo {
+      width: 2rem;
+    }
+  }
+}
