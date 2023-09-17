@@ -22,8 +22,11 @@
 }
 
 .footer {
+  display: flex;
+  align-items: center;
+  height: 70px;
   width: 100%;
-  font-size: 11px;
+  font-size: 12px;
   ul {
     margin: auto;
     display: flex;
