@@ -166,6 +166,10 @@
       width: 18px;
       margin-bottom: 1px;
     }
+    &:disabled {
+      opacity: 0.6;
+      cursor: no-drop;
+    }
   }
   .appleIcon > svg {
     margin-bottom: 3px;
