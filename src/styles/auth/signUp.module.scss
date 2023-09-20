@@ -31,9 +31,7 @@
     transition: 0.5s;
     position: relative;
   }
-  .inputBox {
-    position: relative;
-  }
+
   .inputcon {
     position: absolute;
     line-height: 140%;
@@ -60,11 +58,17 @@
     position: absolute;
     top: -55px;
     padding: 15px;
-
     border-radius: 10px;
     background-color: #ffefef;
     color: #ff4c4c;
     border: 1px solid rgb(255 140 140);
+    opacity: 0;
+    z-index: -1;
+    transition: 0.3s ease-in-out;
+  }
+  .errorcon:hover + .errorMsg {
+    z-index: 0;
+    opacity: 1;
   }
 
   input,
@@ -92,13 +96,54 @@
     background-color: black;
     color: white;
     margin-top: 12px;
-
-    span {
-      opacity: 0.6;
+    &.disabled {
+      cursor: not-allowed;
+      span {
+        opacity: 0.4;
+      }
+    }
+    &.enabled {
       transition: 0.2s;
+      s span {
+        opacity: 0.8;
+        transition: 0.1s;
+      }
+      &:hover span {
+        opacity: 1;
+      }
+      &:active {
+        transform: scale(0.97);
+      }
     }
-    &:hover span {
-      opacity: 0.9;
-    }
+  }
+}
+
+.submitError {
+  position: absolute;
+  background-color: black;
+  padding: 10px 15px;
+  border-radius: 10px;
+  color: white;
+  top: 0%;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  animation: slideIn 3s forwards;
+}
+
+/* 애니메이션 키 프레임 정의 */
+@keyframes slideIn {
+  0% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 1;
+    transform: translate(-50%, 100%);
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, 100%);
   }
 }
