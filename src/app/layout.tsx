@@ -1,3 +1,4 @@
+import Recoil from "@/components/recoil/recoil";
 import "@/styles/globals.css";
 import type { Metadata } from "next";
 
@@ -16,7 +17,9 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="./favicon.ico" type="image/x-icon" />
       </head>
-      <body>{children}</body>
+      <body>
+        <Recoil>{children}</Recoil>
+      </body>
     </html>
   );
 }
