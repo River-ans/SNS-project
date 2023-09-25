@@ -11,6 +11,7 @@ import {
 } from "./validate";
 import { successState } from "@/store/atoms";
 import { useRecoilState } from "recoil";
+import { Spinner } from "../common/common";
 
 export const SignupForm = () => {
   const [formData, setFormData] = useState({
@@ -25,6 +26,7 @@ export const SignupForm = () => {
   const [emailError, setEmailError] = useState("");
   const [pass, setPass] = useState(false);
   const [submitErrorMsg, setSubmitErrorMsg] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useRecoilState(successState);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -88,12 +90,15 @@ export const SignupForm = () => {
         passwordError === "" &&
         passwordConfirmError === ""
       ) {
+        setIsLoading(true);
+        await new Promise((resolve) => setTimeout(resolve, 3000));
         const isSuccess = await register(formData);
         if (isSuccess) {
           console.log("성공");
         } else {
           console.log("실패");
         }
+        setIsLoading(false);
       } else {
         submitError("정보를 정확히 입력해주세요.");
       }
@@ -181,9 +186,16 @@ export const SignupForm = () => {
       </div>
       <button
         type="submit"
-        className={pass ? `${style.enabled}` : `${style.disabled}`}
+        className={
+          isLoading
+            ? `${style.disabled}`
+            : pass
+            ? `${style.enabled}`
+            : `${style.disabled}`
+        }
+        disabled={isLoading}
       >
-        <span>회원가입</span>
+        {isLoading ? <Spinner /> : <span>회원가입</span>}
       </button>
       {submitErrorMsg && (
         <div className={style.submitError}>{submitErrorMsg}</div>

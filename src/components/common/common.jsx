@@ -1,3 +1,4 @@
+import style from "@/styles/common/common.module.scss";
 export const WhiteLineLogo = () => {
   return (
     <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -12,4 +13,8 @@ export const WhiteLineLogo = () => {
       />
     </svg>
   );
+};
+
+export const Spinner = () => {
+  return <span className={style.loader}></span>;
 };
