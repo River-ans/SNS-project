@@ -27,7 +27,7 @@ export const SignupForm = () => {
   const [pass, setPass] = useState(false);
   const [submitErrorMsg, setSubmitErrorMsg] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [isSuccess, setIsSuccess] = useRecoilState(successState);
+  const [SignUpSuccess, setIsSuccess] = useRecoilState(successState);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -91,10 +91,10 @@ export const SignupForm = () => {
         passwordConfirmError === ""
       ) {
         setIsLoading(true);
-        await new Promise((resolve) => setTimeout(resolve, 3000));
         const isSuccess = await register(formData);
         if (isSuccess) {
           console.log("성공");
+          setIsSuccess(true);
         } else {
           console.log("실패");
         }
