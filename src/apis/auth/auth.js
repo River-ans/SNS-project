@@ -12,12 +12,9 @@ export async function register(formData) {
       const data = await response.json();
       throw new Error(data.message || "회원가입 실패");
     }
-
     const data = await response.json();
-    console.log("회원가입 성공:", data);
-    return true;
+    return data;
   } catch (error) {
-    console.error("회원가입 실패:", error);
-    return false;
+    throw error;
   }
 }

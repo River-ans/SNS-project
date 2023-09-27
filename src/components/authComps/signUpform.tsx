@@ -39,30 +39,22 @@ export const SignupForm = () => {
     if (name == "username") {
       const error = validateUsername(value);
       setUsernameError(error);
-      if (error) {
-        return;
-      }
+      if (error) return;
     }
     if (name === "email") {
       const error = validateEmail(value);
       setEmailError(error);
-      if (error) {
-        return;
-      }
+      if (error) return;
     }
     if (name == "password") {
       const error = validatePassword(value);
       setPasswordError(error);
-      if (error) {
-        return;
-      }
+      if (error) return;
     }
     if (name === "passwordConfirm") {
       const error = validatePasswordConfirm(formData.password, value);
       setPasswordConfirmError(error);
-      if (error) {
-        return;
-      }
+      if (error) return;
     }
     if (
       formData.username.trim() !== "" &&
@@ -91,12 +83,21 @@ export const SignupForm = () => {
         passwordConfirmError === ""
       ) {
         setIsLoading(true);
-        const isSuccess = await register(formData);
-        if (isSuccess) {
-          console.log("성공");
+        // const isSuccess = await register(formData);
+        // console.log(isSuccess);
+        try {
+          const data = await register(formData);
+          // 성공 시 실행되는 코드
           setIsSuccess(true);
-        } else {
-          console.log("실패");
+        } catch (error: any) {
+          // 실패 시 실행되는 코드
+          if (error.message === "Failed to fetch") {
+            submitError("서버오류");
+          } else if (error.message === "Network request failed") {
+            submitError("인터넷을 확인해보세요");
+          } else {
+            submitError("회원가입 실패:" + error.message);
+          }
         }
         setIsLoading(false);
       } else {
